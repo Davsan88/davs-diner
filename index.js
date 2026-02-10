@@ -45,9 +45,6 @@ const handleAddClick = (itemId) => {
 
 const renderOrder = () => {
     const orderLinesContainer = document.getElementById('order-lines-container')
-    // const newItem = document.createElement('div')
-    // newItem.innerHTML = `<p>${orderedItems[0]}</p>`
-    // orderLinesContainer.appendChild(newItem)
 
     let orderHtml = ''
 
@@ -57,7 +54,6 @@ const renderOrder = () => {
         `
     })
 
-    // return orderHtml
     orderLinesContainer.innerHTML = orderHtml
 }
 
