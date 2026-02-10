@@ -27,6 +27,7 @@ document.addEventListener('click', function (e) {
     if (e.target.dataset.id) {
         handleAddClick(e.target.dataset.id)
         renderOrder()
+        renderTotal()
     }
      console.log(orderedItems)
 })
@@ -50,11 +51,27 @@ const renderOrder = () => {
 
     orderedItems.forEach((orderedItem) => {
         orderHtml += `
-            <p>${orderedItem.name} x${orderedItem.qty} <span>Remove</span></p>        
+            <div>
+                <p>${orderedItem.name} x${orderedItem.qty}</p>        
+                <button data-id=${orderedItem.id}>Remove</button>
+            </div>
+            
         `
     })
 
     orderLinesContainer.innerHTML = orderHtml
+}
+
+const renderTotal = () => {
+    const totalPrice = document.getElementById('total-price')
+
+    let checkoutTotal = 0
+
+    orderedItems.forEach( orderedItem => {
+        checkoutTotal += orderedItem.qty * orderedItem.price
+    })
+
+    totalPrice.innerHTML = `<div>Total Price: $${checkoutTotal}</div>`
 }
 
 const renderMenu = () => {
