@@ -1,7 +1,6 @@
 import { menuArray } from './data.js'
 
 
-
 const generateMenuHtml = () => {
     let menuHtml = ''
 
@@ -22,29 +21,44 @@ const generateMenuHtml = () => {
     return menuHtml
 }
 
-let order = []
+let orderedItems = []
 
 document.addEventListener('click', function (e) {
     if (e.target.dataset.id) {
         handleAddClick(e.target.dataset.id)
+        renderOrder()
     }
-
-    console.log(order)
+     console.log(orderedItems)
 })
-
 
 const handleAddClick = (itemId) => {
     const targetItem = menuArray.find(item => String(item.id) === itemId)
-    console.log(targetItem)
 
     const { ingredients, emoji, ...updatedItem } = targetItem
-    console.log(updatedItem)
 
-    const itemInOrder = order.find(({ id }) => id === updatedItem.id ) 
+    const itemInOrder = orderedItems.find(({ id }) => id === updatedItem.id)
 
     itemInOrder
         ? itemInOrder.qty++
-        : order.push({ ...updatedItem, qty: 1 })
+        : orderedItems.push({ ...updatedItem, qty: 1 })
+}
+
+const renderOrder = () => {
+    const orderLinesContainer = document.getElementById('order-lines-container')
+    // const newItem = document.createElement('div')
+    // newItem.innerHTML = `<p>${orderedItems[0]}</p>`
+    // orderLinesContainer.appendChild(newItem)
+
+    let orderHtml = ''
+
+    orderedItems.forEach((orderedItem) => {
+        orderHtml += `
+            <p>${orderedItem.name} x${orderedItem.qty} <span>Remove</span></p>        
+        `
+    })
+
+    // return orderHtml
+    orderLinesContainer.innerHTML = orderHtml
 }
 
 const renderMenu = () => {
