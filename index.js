@@ -26,10 +26,14 @@ let orderedItems = []
 document.addEventListener('click', function (e) {
     if (e.target.dataset.id) {
         handleAddClick(e.target.dataset.id)
-        renderOrder()
-        renderTotal()
+        renderCheckout()
     }
-     console.log(orderedItems)
+    console.log(orderedItems)
+
+    if (e.target.dataset.removeId) {
+        handleRemoveClick(e.target.dataset.removeId)
+        renderCheckout()
+    }
 })
 
 const handleAddClick = (itemId) => {
@@ -44,6 +48,33 @@ const handleAddClick = (itemId) => {
         : orderedItems.push({ ...updatedItem, qty: 1 })
 }
 
+const handleRemoveClick = (itemId) => {
+    const removeItem = orderedItems.find(item => String(item.id) === itemId)
+    console.log(removeItem)
+
+    const itemIndex = orderedItems.indexOf(removeItem)
+
+    console.log(itemIndex)
+
+    if (removeItem.qty === 1 ) {
+        orderedItems.splice(itemIndex, 1)
+    } else {
+        removeItem.qty-- 
+    }
+}
+    // const updatedOrder = orderedItems.filter(item => item.id === removeItem)
+    // orderedItems.forEach(item => {
+    //     if(String(item.id) === itemId) {
+
+    //     }
+    // })
+
+    // removeItem
+    //     ? removeItem.qty--
+    //     : orderedItems.filter(item => item.id === removeItem.id)
+    
+
+
 const renderOrder = () => {
     const orderLinesContainer = document.getElementById('order-lines-container')
 
@@ -53,9 +84,9 @@ const renderOrder = () => {
         orderHtml += `
             <div>
                 <p>${orderedItem.name} x${orderedItem.qty}</p>        
-                <button data-id=${orderedItem.id}>Remove</button>
+                <button data-remove-id=${orderedItem.id} id="remove-btn">Remove</button>
             </div>
-            
+            <div>$${orderedItem.qty * orderedItem.price}</div>
         `
     })
 
@@ -67,12 +98,18 @@ const renderTotal = () => {
 
     let checkoutTotal = 0
 
-    orderedItems.forEach( orderedItem => {
+    orderedItems.forEach(orderedItem => {
         checkoutTotal += orderedItem.qty * orderedItem.price
     })
 
     totalPrice.innerHTML = `<div>Total Price: $${checkoutTotal}</div>`
 }
+
+const renderCheckout = () => {
+    renderOrder()
+    renderTotal()
+}
+
 
 const renderMenu = () => {
     document.getElementById('menu').innerHTML = generateMenuHtml()
