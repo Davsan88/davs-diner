@@ -90,8 +90,19 @@ const renderTotal = () => {
 }
 
 const renderCheckout = () => {
+
+    const checkoutEl = document.getElementById('checkout')
+
+    checkoutEl.hidden = orderedItems.length === 0
+
+    // if (orderedItems.length !== 0) {
+    //     document.getElementById('checkout').hidden = false
+    // } else {
+    //     document.getElementById('checkout').hidden = true
+    // }
     renderOrder()
     renderTotal()
+    
 }
 
 
