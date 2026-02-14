@@ -49,15 +49,15 @@ const handleAddClick = (itemId) => {
 
 const handleRemoveClick = (itemId) => {
     const removeItem = orderedItems.find(item => String(item.id) === itemId)
-    
+
     const itemIndex = orderedItems.indexOf(removeItem)
 
-    if (removeItem.qty === 1 ) {
+    if (removeItem.qty === 1) {
         orderedItems.splice(itemIndex, 1)
     } else {
-        removeItem.qty-- 
+        removeItem.qty--
     }
-}  
+}
 
 const renderOrder = () => {
     const orderLinesContainer = document.getElementById('order-lines-container')
@@ -92,17 +92,10 @@ const renderTotal = () => {
 const renderCheckout = () => {
 
     const checkoutEl = document.getElementById('checkout')
-
     checkoutEl.hidden = orderedItems.length === 0
 
-    // if (orderedItems.length !== 0) {
-    //     document.getElementById('checkout').hidden = false
-    // } else {
-    //     document.getElementById('checkout').hidden = true
-    // }
     renderOrder()
     renderTotal()
-    
 }
 
 
