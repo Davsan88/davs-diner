@@ -17,7 +17,6 @@ const generateMenuHtml = () => {
             </div>
         `
     })
-
     return menuHtml
 }
 
@@ -50,30 +49,15 @@ const handleAddClick = (itemId) => {
 
 const handleRemoveClick = (itemId) => {
     const removeItem = orderedItems.find(item => String(item.id) === itemId)
-    console.log(removeItem)
-
+    
     const itemIndex = orderedItems.indexOf(removeItem)
-
-    console.log(itemIndex)
 
     if (removeItem.qty === 1 ) {
         orderedItems.splice(itemIndex, 1)
     } else {
         removeItem.qty-- 
     }
-}
-    // const updatedOrder = orderedItems.filter(item => item.id === removeItem)
-    // orderedItems.forEach(item => {
-    //     if(String(item.id) === itemId) {
-
-    //     }
-    // })
-
-    // removeItem
-    //     ? removeItem.qty--
-    //     : orderedItems.filter(item => item.id === removeItem.id)
-    
-
+}  
 
 const renderOrder = () => {
     const orderLinesContainer = document.getElementById('order-lines-container')
