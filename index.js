@@ -1,5 +1,6 @@
 import { menuArray } from './data.js'
 
+const modal = document.getElementById('modal')
 
 const generateMenuHtml = () => {
     let menuHtml = ''
@@ -33,6 +34,12 @@ document.addEventListener('click', function (e) {
         handleRemoveClick(e.target.dataset.removeId)
         renderCheckout()
     }
+
+    console.log(e.target.id)
+    if (e.target.id === 'complete-btn') {
+        modal.hidden = false
+    }
+
 })
 
 const handleAddClick = (itemId) => {
@@ -58,8 +65,6 @@ const handleRemoveClick = (itemId) => {
         removeItem.qty--
     }
 }
-
-
 
 const renderOrder = () => {
     const orderLinesContainer = document.getElementById('order-lines-container')
