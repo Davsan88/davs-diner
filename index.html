@@ -29,9 +29,38 @@
             <div>
                 <p id="total-price"></p>
             </div>
-                <button>Complete order</button>
+            <button class="ccv-number" id="complete-btn">Complete order</button>
         </section>
     </main>
+    <div id='modal' class='modal' hidden>
+        <h2>Enter card details</h2>
+        <form id="details-form">
+            <div class="modal-details-inputs">
+                <input 
+                    type="text"
+                    id="user-name"
+                    name="user-name"
+                    placeholder="Enter your name"
+                    required
+                    >
+                <input 
+                    type="text"
+                    id="card-number"
+                    name="card-number"
+                    placeholder="Enter card number"
+                    required
+                    >
+                <input 
+                    type="text"
+                    id="ccv-number"
+                    name="ccv-number"
+                    placeholder="Enter CVV"
+                    required
+                    >
+            </div>
+            <button class="green-btn" id="pay-btn" type="submit">Pay</button>
+        </form>
+    </div>
 
 </body>
 
