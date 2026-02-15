@@ -22,14 +22,19 @@
     </header>
     <main>
         <section id="menu"></section>
-        <section id="checkout" hidden>
-            <h2>Your order</h2>
-            <div id="order-lines-container">
+        <section id="checkout" >
+            <div id="checkout-content" hidden>
+                <h2>Your order</h2>
+                <div id="order-lines-container">
+                </div>
+                <div>
+                    <p id="total-price"></p>
+                </div>
+                <button class="green-btn" id="complete-btn">Complete order</button>
             </div>
-            <div>
-                <p id="total-price"></p>
+            <div id="checkout-confirmation" hidden>
+                <p>Thanks, NAME! Your order is on its way!</p> 
             </div>
-            <button class="ccv-number" id="complete-btn">Complete order</button>
         </section>
     </main>
     <div id='modal' class='modal' hidden>
@@ -37,26 +42,26 @@
         <form id="details-form">
             <div class="modal-details-inputs">
                 <input 
-                    type="text"
-                    id="user-name"
-                    name="user-name"
-                    placeholder="Enter your name"
+                    type="text" 
+                    id="user-name" 
+                    name="user-name" 
+                    placeholder="Enter your name" 
                     required
-                    >
+                >
                 <input 
-                    type="text"
-                    id="card-number"
-                    name="card-number"
-                    placeholder="Enter card number"
+                    type="text" 
+                    id="card-number" 
+                    name="card-number" 
+                    placeholder="Enter card number" 
                     required
-                    >
+                >
                 <input 
-                    type="text"
-                    id="ccv-number"
-                    name="ccv-number"
-                    placeholder="Enter CVV"
+                    type="text" 
+                    id="ccv-number" 
+                    name="ccv-number" 
+                    placeholder="Enter CVV" 
                     required
-                    >
+                >
             </div>
             <button class="green-btn" id="pay-btn" type="submit">Pay</button>
         </form>
