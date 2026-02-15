@@ -59,6 +59,8 @@ const handleRemoveClick = (itemId) => {
     }
 }
 
+
+
 const renderOrder = () => {
     const orderLinesContainer = document.getElementById('order-lines-container')
 
@@ -68,7 +70,7 @@ const renderOrder = () => {
         orderHtml += `
             <div>
                 <p>${orderedItem.name} x${orderedItem.qty}</p>        
-                <button data-remove-id=${orderedItem.id} id="remove-btn">Remove</button>
+                <button data-remove-id=${orderedItem.id} class="remove-btn">Remove</button>
             </div>
             <div>$${orderedItem.qty * orderedItem.price}</div>
         `
@@ -90,9 +92,8 @@ const renderTotal = () => {
 }
 
 const renderCheckout = () => {
-
-    const checkoutEl = document.getElementById('checkout')
-    checkoutEl.hidden = orderedItems.length === 0
+    const checkoutContent = document.getElementById('checkout-content')
+    checkoutContent.hidden = orderedItems.length === 0
 
     renderOrder()
     renderTotal()
