@@ -14,7 +14,7 @@ const generateMenuHtml = () => {
                     <p class="item-ingredients">${menuItem.ingredients}</p>
                     <p class="item-price">$${menuItem.price}</p>
                 </div>
-                <button class="add-btn" data-id=${menuItem.id}>+</button>
+                <button class="add-btn" data-action="add" data-id=${menuItem.id}>+</button>
             </div>
         `
     })
@@ -24,23 +24,29 @@ const generateMenuHtml = () => {
 let orderedItems = []
 
 document.addEventListener('click', function (e) {
-    if (e.target.dataset.id) {
+    if (e.target.dataset.action === 'add') {
+        checkoutConfirmation.hidden = true
         handleAddClick(e.target.dataset.id)
         renderCheckout()
     }
-    console.log(orderedItems)
-
-    if (e.target.dataset.removeId) {
-        handleRemoveClick(e.target.dataset.removeId)
+    
+    if (e.target.dataset.action === 'remove') {
+        handleRemoveClick(e.target.dataset.id)
         renderCheckout()
     }
-
-    console.log(e.target.id)
-    if (e.target.id === 'complete-btn') {
+    
+    if (e.target.dataset.action === 'complete') {
         modal.hidden = false
     }
 
+    
+   
+    console.log(e.target.dataset.action)
+
+    console.log(orderedItems)
 })
+
+
 
 const handleAddClick = (itemId) => {
     const targetItem = menuArray.find(item => String(item.id) === itemId)
@@ -66,6 +72,8 @@ const handleRemoveClick = (itemId) => {
     }
 }
 
+
+
 const renderOrder = () => {
     const orderLinesContainer = document.getElementById('order-lines-container')
 
@@ -75,7 +83,8 @@ const renderOrder = () => {
         orderHtml += `
             <div>
                 <p>${orderedItem.name} x${orderedItem.qty}</p>        
-                <button data-remove-id=${orderedItem.id} class="remove-btn">Remove</button>
+                <button class="remove-btn" data-action="remove" data-id=${orderedItem.id} >Remove
+                </button>
             </div>
             <div>$${orderedItem.qty * orderedItem.price}</div>
         `
@@ -103,7 +112,6 @@ const renderCheckout = () => {
     renderOrder()
     renderTotal()
 }
-
 
 const renderMenu = () => {
     document.getElementById('menu').innerHTML = generateMenuHtml()
