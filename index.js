@@ -4,9 +4,6 @@ const modal = document.getElementById('modal')
 const form = document.getElementById('details-form')
 const checkoutConfirmation = document.getElementById('checkout-confirmation')
 
-console.log(form)
-
-
 const generateMenuHtml = () => {
     let menuHtml = ''
 
@@ -46,17 +43,12 @@ document.addEventListener('click', function (e) {
 
     if (e.target.dataset.action === 'close' || e.target === modal) {
         modal.hidden = true
-    }    
-   
-    console.log(e.target.dataset.action)
-
-    console.log(orderedItems)
+    }
 })
 
 form.addEventListener('submit', (e) => {
     handlePaymentSubmit(e) 
 })
-
 
 const handleAddClick = (itemId) => {
     const targetItem = menuArray.find(item => String(item.id) === itemId)
@@ -92,15 +84,13 @@ const handlePaymentSubmit = (e) => {
     modal.hidden = true
 
     orderedItems = []
+    
     renderCheckout()
 
     checkoutConfirmation.hidden = false
     checkoutConfirmation.textContent = `Thanks, ${name}! Your order is on its way!`
 
     form.reset()
-
-    console.log(orderedItems)
-    console.log(checkoutConfirmation)
 }
 
 
