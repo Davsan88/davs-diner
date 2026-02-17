@@ -77,14 +77,23 @@ const handleRemoveClick = (itemId) => {
 const handlePaymentSubmit = (e) => {
     e.preventDefault()
 
+     const errorEl = document.getElementById('form-error')
+
     const userName = document.getElementById('user-name').value
     const trimmedName = userName.trim()
-    const name = trimmedName.charAt(0).toUpperCase() + trimmedName.slice(1) || 'friend'
+
+    if (!trimmedName) {
+        errorEl.textContent = 'Please enter your name'
+        return
+    }
+
+    errorEl.textContent = ''
+
+    const name = trimmedName.charAt(0).toUpperCase() + trimmedName.slice(1)
 
     modal.hidden = true
 
     orderedItems = []
-    
     renderCheckout()
 
     checkoutConfirmation.hidden = false
