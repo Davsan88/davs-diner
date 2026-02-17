@@ -2,6 +2,7 @@ import { menuArray } from './data.js'
 
 const modal = document.getElementById('modal')
 const form = document.getElementById('details-form')
+const checkoutConfirmation = document.getElementById('checkout-confirmation')
 
 console.log(form)
 
@@ -81,6 +82,26 @@ const handleRemoveClick = (itemId) => {
     }
 }
 
+const handlePaymentSubmit = (e) => {
+    e.preventDefault()
+
+    const userName = document.getElementById('user-name').value
+    const trimmedName = userName.trim()
+    const name = trimmedName.charAt(0).toUpperCase() + trimmedName.slice(1) || 'friend'
+
+    modal.hidden = true
+
+    orderedItems = []
+    renderCheckout()
+
+    checkoutConfirmation.hidden = false
+    checkoutConfirmation.textContent = `Thanks, ${name}! Your order is on its way!`
+
+    form.reset()
+
+    console.log(orderedItems)
+    console.log(checkoutConfirmation)
+}
 
 
 const renderOrder = () => {
