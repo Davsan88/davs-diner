@@ -39,7 +39,9 @@ document.addEventListener('click', function (e) {
         modal.hidden = false
     }
 
-    
+    if (e.target.dataset.action === 'close' || e.target === modal) {
+        modal.hidden = true
+    }    
    
     console.log(e.target.dataset.action)
 
