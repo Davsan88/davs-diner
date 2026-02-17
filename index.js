@@ -1,6 +1,10 @@
 import { menuArray } from './data.js'
 
 const modal = document.getElementById('modal')
+const form = document.getElementById('details-form')
+
+console.log(form)
+
 
 const generateMenuHtml = () => {
     let menuHtml = ''
@@ -48,6 +52,9 @@ document.addEventListener('click', function (e) {
     console.log(orderedItems)
 })
 
+form.addEventListener('submit', (e) => {
+    handlePaymentSubmit(e) 
+})
 
 
 const handleAddClick = (itemId) => {
