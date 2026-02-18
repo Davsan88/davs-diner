@@ -3,7 +3,7 @@ import { menuArray } from './data.js'
 const modal = document.getElementById('modal')
 const form = document.getElementById('details-form')
 const checkoutConfirmation = document.getElementById('checkout-confirmation')
-const userName = document.getElementById('user-name')
+const nameInput = document.getElementById('user-name')
 const errorEl = document.getElementById('form-error')
 
 
@@ -58,8 +58,8 @@ form.addEventListener('submit', (e) => {
 })
 
 
-userName.addEventListener('input', () => {
-    const trimmedName = userName.value.trim()
+nameInput.addEventListener('input', () => {
+    const trimmedName = nameInput.value.trim()
 
     if( trimmedName ) {
           errorEl.textContent = ''
@@ -99,7 +99,7 @@ const handleRemoveClick = (itemId) => {
 const handlePaymentSubmit = (e) => {
     e.preventDefault()
 
-    const trimmedName = userName.value.trim()
+    const trimmedName = nameInput.value.trim()
 
    if (!trimmedName) {
         errorEl.textContent = 'Please enter your name'
