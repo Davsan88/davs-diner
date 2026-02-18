@@ -1,11 +1,25 @@
 import { menuArray } from './data.js'
 
+
+// Stable containers
+
+const menu = document.getElementById('menu')
+const orderLinesContainer = document.getElementById('order-lines-container')
+const totalPrice = document.getElementById('total-price')
+const checkoutContent = document.getElementById('checkout-content')
 const modal = document.getElementById('modal')
 const form = document.getElementById('details-form')
 const checkoutConfirmation = document.getElementById('checkout-confirmation')
 const nameInput = document.getElementById('user-name')
 const errorEl = document.getElementById('form-error')
 
+
+// State
+
+let orderedItems = []
+
+
+// Pure helper (generate HTML)
 
 const generateMenuHtml = () => {
     let menuHtml = ''
@@ -27,51 +41,54 @@ const generateMenuHtml = () => {
 }
 
 
-let orderedItems = []
+// Render functions
 
-// Event listeners
-
-document.addEventListener('click', function (e) {
-    if (e.target.dataset.action === 'add') {
-        checkoutConfirmation.hidden = true
-        handleAddClick(e.target.dataset.id)
-        renderCheckout()
-    }
-    
-    if (e.target.dataset.action === 'remove') {
-        handleRemoveClick(e.target.dataset.id)
-        renderCheckout()
-    }
-    
-    if (e.target.dataset.action === 'complete') {
-        modal.hidden = false
-    }
-
-    if (e.target.dataset.action === 'close' || e.target === modal) {
-        modal.hidden = true
-    }
-})
+const renderMenu = () => {
+    menu.innerHTML = generateMenuHtml()
+}
 
 
-form.addEventListener('submit', (e) => {
-    handlePaymentSubmit(e) 
-})
+const renderOrder = () => {
+    let orderHtml = ''
+
+    orderedItems.forEach((orderedItem) => {
+        orderHtml += `
+            <div>
+                <p>${orderedItem.name} x${orderedItem.qty}</p>        
+                <button class="remove-btn" data-action="remove" data-id=${orderedItem.id} >Remove
+                </button>
+            </div>
+            <div>$${orderedItem.qty * orderedItem.price}</div>
+        `
+    })
+
+    orderLinesContainer.innerHTML = orderHtml
+}
 
 
-nameInput.addEventListener('input', () => {
-    const trimmedName = nameInput.value.trim()
+const renderTotal = () => {
+    let checkoutTotal = 0
 
-    if( trimmedName ) {
-          errorEl.textContent = ''
-      } 
-})
+    orderedItems.forEach(orderedItem => {
+        checkoutTotal += orderedItem.qty * orderedItem.price
+    })
+
+    totalPrice.innerHTML = `<div>Total Price: $${checkoutTotal}</div>`
+}
+
+
+const renderCheckout = () => {
+    checkoutContent.hidden = orderedItems.length === 0
+
+    renderOrder()
+    renderTotal()
+}
 
 
 // Handlers
 
-
 const handleAddClick = (itemId) => {
-    const targetItem = menuArray.find(item => String(item.id) === itemId)
+    const targetItem = menuArray.find(item => item.id === itemId)
 
     const { ingredients, emoji, ...updatedItem } = targetItem
 
@@ -84,7 +101,7 @@ const handleAddClick = (itemId) => {
 
 
 const handleRemoveClick = (itemId) => {
-    const removeItem = orderedItems.find(item => String(item.id) === itemId)
+    const removeItem = orderedItems.find(item => item.id === itemId)
 
     const itemIndex = orderedItems.indexOf(removeItem)
 
@@ -120,54 +137,45 @@ const handlePaymentSubmit = (e) => {
 }
 
 
-// Rendering
+// Event listeners
+
+document.addEventListener('click', function (e) {
+    const action = e.target.dataset.action
+
+    if ( action === 'add') {
+        checkoutConfirmation.hidden = true
+        const itemId = Number(e.target.dataset.id)
+        handleAddClick(itemId)
+        renderCheckout()
+    }
+    
+    if (action === 'remove') {
+        const itemId = Number(e.target.dataset.id)
+        handleRemoveClick(itemId)
+        renderCheckout()
+    }
+    
+    if (action === 'complete') {
+        modal.hidden = false
+    }
+
+    if (action === 'close' || e.target === modal) {
+        modal.hidden = true
+    }
+})
 
 
-const renderOrder = () => {
-    const orderLinesContainer = document.getElementById('order-lines-container')
-
-    let orderHtml = ''
-
-    orderedItems.forEach((orderedItem) => {
-        orderHtml += `
-            <div>
-                <p>${orderedItem.name} x${orderedItem.qty}</p>        
-                <button class="remove-btn" data-action="remove" data-id=${orderedItem.id} >Remove
-                </button>
-            </div>
-            <div>$${orderedItem.qty * orderedItem.price}</div>
-        `
-    })
-
-    orderLinesContainer.innerHTML = orderHtml
-}
+form.addEventListener('submit', handlePaymentSubmit)
 
 
-const renderTotal = () => {
-    const totalPrice = document.getElementById('total-price')
+nameInput.addEventListener('input', () => {
+    const trimmedName = nameInput.value.trim()
 
-    let checkoutTotal = 0
+    if( trimmedName ) {
+          errorEl.textContent = ''
+      } 
+})
 
-    orderedItems.forEach(orderedItem => {
-        checkoutTotal += orderedItem.qty * orderedItem.price
-    })
-
-    totalPrice.innerHTML = `<div>Total Price: $${checkoutTotal}</div>`
-}
-
-
-const renderCheckout = () => {
-    const checkoutContent = document.getElementById('checkout-content')
-    checkoutContent.hidden = orderedItems.length === 0
-
-    renderOrder()
-    renderTotal()
-}
-
-
-const renderMenu = () => {
-    document.getElementById('menu').innerHTML = generateMenuHtml()
-}
 
 
 renderMenu()
