@@ -4,6 +4,9 @@ const modal = document.getElementById('modal')
 const form = document.getElementById('details-form')
 const checkoutConfirmation = document.getElementById('checkout-confirmation')
 
+const userName = document.getElementById('user-name')
+const errorEl = document.getElementById('form-error')
+
 const generateMenuHtml = () => {
     let menuHtml = ''
 
@@ -50,6 +53,14 @@ form.addEventListener('submit', (e) => {
     handlePaymentSubmit(e) 
 })
 
+userName.addEventListener('input', () => {
+    const trimmedName = userName.value.trim()
+
+    if( trimmedName ) {
+          errorEl.textContent = ''
+      } 
+})
+
 const handleAddClick = (itemId) => {
     const targetItem = menuArray.find(item => String(item.id) === itemId)
 
@@ -77,19 +88,14 @@ const handleRemoveClick = (itemId) => {
 const handlePaymentSubmit = (e) => {
     e.preventDefault()
 
-     const errorEl = document.getElementById('form-error')
+    const trimmedName = userName.value.trim()
 
-    const userName = document.getElementById('user-name').value
-    const trimmedName = userName.trim()
-
-    if (!trimmedName) {
+   if (!trimmedName) {
         errorEl.textContent = 'Please enter your name'
         return
     }
 
-    errorEl.textContent = ''
-
-    const name = trimmedName.charAt(0).toUpperCase() + trimmedName.slice(1)
+   const name = trimmedName.charAt(0).toUpperCase() + trimmedName.slice(1)
 
     modal.hidden = true
 
