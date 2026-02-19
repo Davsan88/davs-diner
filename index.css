@@ -14,27 +14,26 @@ header {
 
 }
 
-#menu {
-    padding: 2rem;
+/* Menu */
+
+.menu {
+    padding: 2rem 3rem;
+    background-color: darkorchid;
 }
 
 .menu-item {
-    /* background-color: orangered; */
     display: flex;
     align-items: center;
-    padding-bottom: 3rem;
-    margin-bottom: 2rem;
+    padding: 3rem 0;
     border-bottom: 2px solid #D2D2D2;
 }
 
 .item-img {
-    /* background-color: darkorchid; */
     max-width: 100%;
     height: auto;
 }
 
 .item-info {
-    /* background-color: aqua; */
     margin-left: 1.5rem;
 }
 
@@ -66,6 +65,57 @@ header {
 }
 
 
+/* Checkout */
+
+.checkout {
+    padding: 0 3rem 2rem;
+    background-color: crimson;
+}
+
+.checkout-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(59, 155, 190);
+}
+
+.checkout-heading {
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.checkout-lines-container {
+    background-color: chartreuse;
+    display: flex;
+    flex-direction: column;
+    /* padding: 1rem; */
+}
+
+.checkout-item-div {
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 1rem ;
+}
+
+.checkout-item-info {
+    display: flex;
+    gap: 10px;
+}
+
+.checkout-complete-btn {
+    margin-top: 2rem;
+    padding: 1rem 0;
+}
+
+.checkout-total-div {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+
+}
+
 
 /* utility */
 .hidden{
@@ -85,8 +135,7 @@ header {
 }
 
 .modal-inner{
-    width: 290px;
-    margin: 0 auto;
+    
     background-color: #212529;
     border-radius: 5px;
     box-shadow: 0px 0px 6px 2px #666;
