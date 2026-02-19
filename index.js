@@ -53,12 +53,19 @@ const renderOrder = () => {
 
     orderedItems.forEach((orderedItem) => {
         orderHtml += `
-            <div>
-                <p>${orderedItem.name} x${orderedItem.qty}</p>        
-                <button class="remove-btn" data-action="remove" data-id=${orderedItem.id} >Remove
+        <div class="checkout-item-div">
+            <div class="checkout-item-info">
+                <p class="checkout-item-name">
+                    ${orderedItem.name} x${orderedItem.qty}
+                </p>        
+                <button class="checkout-remove-btn" data-action="remove" data-id=${orderedItem.id}>
+                    remove
                 </button>
             </div>
-            <div>$${orderedItem.qty * orderedItem.price}</div>
+            <div class="checkout-item-price">
+                $${orderedItem.qty * orderedItem.price}
+            </div>
+        </div>    
         `
     })
 
@@ -73,7 +80,10 @@ const renderTotal = () => {
         checkoutTotal += orderedItem.qty * orderedItem.price
     })
 
-    totalPrice.innerHTML = `<div>Total Price: $${checkoutTotal}</div>`
+    totalPrice.innerHTML = `<div class="checkout-total-div">
+                                <p>Total Price:</p>
+                                <p> $${checkoutTotal}</p>
+                            </div>`
 }
 
 
