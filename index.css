@@ -81,10 +81,6 @@ header {
     font-size: 1.75rem;
 }
 
-.checkout-content {
-    
-}
-
 .checkout-content-wraper {
     display: flex;
     flex-direction: column;
@@ -152,9 +148,47 @@ header {
 
 .add-btn, .checkout-remove-btn,
 .checkout-complete-btn {
-    cursor: pointer
+    cursor: pointer;
+    transition: all 0.15 ease;
 }
 
+.add-btn:hover {
+    border-color: #bdbdbd;
+    transform: scale(1.05);
+}
+
+.add-btn:active {
+    transform: scale(0.96);
+}
+
+.add-btn:focus-visible {
+    outline: 2px solid #16db99;
+    outline-offset: 3px;
+}
+
+.checkout-remove-btn:hover {
+    text-decoration: 1px underline #bdbdbd;
+    color: #919191; 
+}
+
+.checkout-remove-btn:focus-visible {
+    outline: 2px solid #16db99;
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+.checkout-complete-btn:hover {
+    transform: translate(2px, 2px) 
+}
+
+.checkout-complete-btn:active {
+    transform: translate(-2px, -2px) scale(0.96);
+}
+
+.checkout-complete-btn:focus-visible {
+    outline: 2px solid #16db99;
+    outline-offset: 3px;
+}
  
 /* utility  */
  /* .hidden{
