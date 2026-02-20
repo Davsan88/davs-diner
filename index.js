@@ -81,7 +81,7 @@ const renderTotal = () => {
     })
 
     totalPrice.innerHTML = `<div class="checkout-total-div">
-                                <p>Total Price:</p>
+                                <p>Total price:</p>
                                 <p> $${checkoutTotal}</p>
                             </div>`
 }
