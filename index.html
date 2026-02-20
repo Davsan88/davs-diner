@@ -24,15 +24,18 @@
         <section id="menu" class="menu"></section>
         <section id="checkout" class="checkout">
             <div id="checkout-content" class="checkout-content" hidden>
-                <h2 class="checkout-heading">Your order</h2>
-                <div id="order-lines-container" class="checkout-lines-container">
+                <div id="checkout-content-wraper" class="checkout-content-wraper">
+
+                    <h2 class="checkout-heading">Your order</h2>
+                    <div id="order-lines-container" class="checkout-lines-container">
+                    </div>
+                    <div>
+                        <p id="total-price" class="checkout-total"></p>
+                    </div>
+                    <button class="checkout-complete-btn" data-action="complete" id="complete-btn">
+                        Complete order
+                    </button>
                 </div>
-                <div>
-                    <p id="total-price" class="checkout-total"></p>
-                </div>
-                <button class="checkout-complete-btn" data-action="complete" id="complete-btn">
-                    Complete order
-                </button>
             </div>
             <div id="checkout-confirmation" class="checkout-confirmation-container" hidden>
                 <p class="checkout-confirmation-message">
