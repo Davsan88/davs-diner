@@ -15,7 +15,7 @@
     <script type="module" src="index.js" defer></script>
 </head>
 
-<body data-action="close">
+<body>
     <header>
         <h1>Dav's Diner</h1>
         <p>The best vegan diner you can imagine</p>
@@ -44,7 +44,7 @@
             </div>
         </section>
     </main>
-    <div id='modal' class='modal' hidden>
+    <div id='modal' class='modal' data-action="close" hidden>
         <div class="modal-inner" id="modal-inner">
             <div class="close-modal-btn-container">
                 <button class="modal-close-btn" data-action="close" id="modal-close-btn">X</button>
@@ -52,10 +52,10 @@
             <h2 class="modal-heading">Enter card details</h2>
             <form id="details-form" class="modal-form">
                 <div class="modal-details-inputs">
-                    <input type="text" id="user-name" name="user-name" placeholder="Enter your name" required>
                     <p id="form-error" class="form-error"></p>
-                    <input type="text" id="card-number" name="card-number" placeholder="Enter card number" required>
-                    <input type="text" id="ccv-number" name="ccv-number" placeholder="Enter CVV" required>
+                    <input class="modal-input" type="text" id="user-name" name="user-name" placeholder="Enter your name" required>
+                    <input class="modal-input" type="text" id="card-number" name="card-number" placeholder="Enter card number" required>
+                    <input class="modal-input" type="text" id="ccv-number" name="ccv-number" placeholder="Enter CVV" required>
                 </div>
                 <button class="modal-pay-btn" data-action="pay" id="pay-btn" type="submit">Pay</button>
             </form>
