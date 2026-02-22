@@ -149,6 +149,23 @@ header {
     border-radius: 3px;
 }
 
+.checkout-confirmation-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: #D1FAE5;
+    color: #0b966e;
+    border-radius: 6px;
+    font-weight: 0;
+    /* line-height: 5rem; */
+
+}
+
+#customer-name {
+    font-weight: 700;
+    /* font-size: large; */
+}
+
 
 /* button states */
 
@@ -306,3 +323,4 @@ header {
     line-height: 1.5rem;
     
 }
+
