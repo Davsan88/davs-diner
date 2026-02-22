@@ -141,7 +141,11 @@ const handlePaymentSubmit = (e) => {
     renderCheckout()
 
     checkoutConfirmation.hidden = false
-    checkoutConfirmation.textContent = `Thanks, ${name}! Your order is on its way!`
+    checkoutConfirmation.innerHTML = `<p class="checkout-confirmation-message">
+                    Thanks, <span id="customer-name">${name}!</span> Your order is on its way!
+                </p>` 
+    
+    // `Thanks, ${name}! Your order is on its way!`
 
     form.reset()
 }
