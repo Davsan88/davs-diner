@@ -12,6 +12,7 @@ const form = document.getElementById('details-form')
 const checkoutConfirmation = document.getElementById('checkout-confirmation')
 const nameInput = document.getElementById('user-name')
 const errorEl = document.getElementById('form-error')
+const customerName = document.getElementById('customer-name')
 
 
 // State
@@ -141,9 +142,10 @@ const handlePaymentSubmit = (e) => {
     renderCheckout()
 
     checkoutConfirmation.hidden = false
-    checkoutConfirmation.innerHTML = `<p class="checkout-confirmation-message">
-                    Thanks, <span id="customer-name">${name}!</span> Your order is on its way!
-                </p>` 
+    customerName.textContent = name
+    // checkoutConfirmation.innerHTML = `<p class="checkout-confirmation-message">
+    //                 Thanks, <span id="customer-name">${name}!</span> Your order is on its way!
+    //             </p>` 
     
     // `Thanks, ${name}! Your order is on its way!`
 
