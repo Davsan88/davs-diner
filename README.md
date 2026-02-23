@@ -69,3 +69,39 @@ When the state changes:
 - UI visibility updates automatically
 
 This mirrors real-world React-style thinking — but implemented in pure JavaScript.
+
+--- 
+
+🧪 How to Use
+
+1. Add items from the menu using the "+" buttons.
+2. Review your order in the checkout section.
+3. Click Complete Order.
+4. Enter your name and payment details.
+5. Submit to see a personalized confirmation message.
+6. Start a new order immediately after checkout.
+
+---
+
+🎨 UI & UX Details
+
+- Mobile-first layout (max-width container)
+- Styled modal with overlay and centered card
+- Button interaction feedback (hover, active, focus)
+- Soft success confirmation state
+- Clean spacing and layout hierarchy
+- Defensive input validation with error messaging
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
