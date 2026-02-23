@@ -94,11 +94,46 @@ This mirrors real-world React-style thinking — but implemented in pure JavaScr
 
 ---
 
+🏗️ Possible Next Steps
 
+- 💾 Persist orders using localStorage
+- 🎨 Add subtle animations (fade-in modal / confirmation)
+- 💳 Improve card input formatting
+- 🧾 Add quantity controls directly in checkout
+- 🌙 Add dark mode theme
+- ⚛ Rebuild using React for comparison
 
+---
 
+💡 Skills Practiced
 
+- DOM manipulation and rendering patterns
+- State-driven UI architecture
+- Event delegation
+- CSS layout debugging (Flexbox behavior, centering logic)
+- Refactoring and cleanup discipline
+- Clean commit structuring (style, refactor, chore)
 
+---
+
+✅ Why I’m Proud
+
+This project goes beyond the initial course brief. I focused on writing cleaner structure, improving UX behavior, and making the app feel closer to a production-ready mobile interface — all without frameworks.
+
+It strengthened my understanding of state-driven rendering and layout architecture in vanilla JavaScript.
+
+---
+
+🌐 Live Demo
+
+Check out the live version here: [https://davsdinner.netlify.app/](https://davsdinner.netlify.app/)
+
+---
+
+## 📫 Contact
+
+Got feedback or questions?  
+Email me at: **david.sanchez.martinez@outlook.com**
 
 
 
