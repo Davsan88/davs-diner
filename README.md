@@ -3,7 +3,7 @@
 Hello there! 👋
 This is a fully interactive mobile-first diner ordering app built with vanilla JavaScript, HTML, and CSS
 
-👉 [Live Demo](https://davsdinner.netlify.app/)
+👉 [Live Demo](https://davsdiner.netlify.app/)
 
 Originally built as a Scrimba solo project, I took it further by implementing structured state management, dynamic rendering, modal-based checkout, validation handling, and polished UI interactions.
 
@@ -126,7 +126,7 @@ It strengthened my understanding of state-driven rendering and layout architectu
 
 🌐 Live Demo
 
-Check out the live version here: [https://davsdinner.netlify.app/](https://davsdinner.netlify.app/)
+Check out the live version here: [https://davsdinner.netlify.app/](https://davsdiner.netlify.app/)
 
 ---
 
