@@ -30,4 +30,42 @@ Built from a Figma design file and implemented pixel-accurately in HTML, CSS, an
 
 ---
 
+## 🛠️ Technologies Used
 
+- **HTML5** – Semantic structure  
+- **CSS3** – Mobile-first layout with Flexbox  
+- **JavaScript (ES6)** – State management, rendering logic, and event handling  
+
+---
+
+## 📚 Features Covered
+
+- Event delegation using `data-*` attributes  
+- Dynamic UI rendering based on application state  
+- Clean separation of concerns (state → render → DOM)  
+- Form handling with `preventDefault()`  
+- Input validation with real-time feedback  
+- Modal overlay logic (click outside to close + close button)  
+- Accessible focus states (`:focus-visible`)  
+- Responsive sizing with `clamp()` and `min()`  
+- Conditional rendering using `[hidden]`  
+
+---
+
+## 🧠 Core Concept
+
+The app is driven by a single source of truth:
+
+```js
+let orderedItems = []
+```
+
+The UI updates entirely based on that state.
+
+When the state changes:
+
+- The checkout section re-renders
+- Totals are recalculated
+- UI visibility updates automatically
+
+This mirrors real-world React-style thinking — but implemented in pure JavaScript.
