@@ -126,7 +126,7 @@ It strengthened my understanding of state-driven rendering and layout architectu
 
 🌐 Live Demo
 
-Check out the live version here: [https://davsdinner.netlify.app/](https://davsdiner.netlify.app/)
+Check out the live version here: [https://davsdiner.netlify.app/](https://davsdiner.netlify.app/)
 
 ---
 
